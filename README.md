@@ -19,7 +19,7 @@ A self-hosted library and reading platform for ebooks, PDFs, audiobooks, and com
 [![App Store](https://img.shields.io/badge/App_Store-download-0D96F6?style=flat-square&logo=appstore&logoColor=white)](https://apps.apple.com/us/app/bookorbit-the-official-app/id6811807346)
 ![Android coming soon](https://img.shields.io/badge/Android-coming_soon-3DDC84?style=flat-square&logo=android&logoColor=white)
 [![Crowdin](https://img.shields.io/badge/Crowdin-translate-2E3340?style=flat-square&logo=crowdin&logoColor=white)](https://crowdin.com/project/bookorbit)
-[![Contributing](https://img.shields.io/badge/Contributing-guide-orange?style=flat-square&logo=handshake&logoColor=white)](https://github.com/bookorbit/bookorbit/blob/main/docs/CONTRIBUTING.md)
+[![Contributing](https://img.shields.io/badge/Contributing-guide-orange?style=flat-square&logo=handshake&logoColor=white)](https://github.com/bookorbit/bookorbit/blob/main/CONTRIBUTING.md)
 
 ![BookOrbit dashboard showing reading stats, widgets, and book shelves](docs/images/dashboard-overview.png)
 
@@ -196,7 +196,7 @@ Full documentation lives at **[bookorbit.app](https://bookorbit.app/what-is-book
 **Contributing**
 
 - **Local development**: architecture, first-time setup, running, testing and conventions in [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
-- **Contributing**: branch naming, test expectations, the PR checklist and commit format in [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
+- **Contributing**: branch naming, test expectations, the PR checklist and commit format in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <a id="support-bookorbit"></a>
 
