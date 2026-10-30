@@ -360,7 +360,7 @@ export class OpdsBookService {
 
     if (filters?.collectionId) {
       const [collection] = await this.collectionRepository.findById(filters.collectionId);
-      if (!collection || collection.mediaType !== 'books' || (collection.userId !== userId && !collection.isPublic)) {
+      if (!collection || (collection.userId !== userId && !collection.isPublic)) {
         throw new ForbiddenException('No access to this collection');
       }
     }
@@ -1154,7 +1154,7 @@ export class OpdsBookService {
     const [row] = await this.db
       .select({ total: count() })
       .from(smartScopes)
-      .where(and(eq(smartScopes.mediaType, 'books'), or(eq(smartScopes.userId, userId), eq(smartScopes.isPublic, true))));
+      .where(or(eq(smartScopes.userId, userId), eq(smartScopes.isPublic, true)));
     return Number(row?.total ?? 0);
   }
 
@@ -1248,7 +1248,7 @@ export class OpdsBookService {
         icon: smartScopes.icon,
       })
       .from(smartScopes)
-      .where(and(eq(smartScopes.mediaType, 'books'), or(eq(smartScopes.userId, userId), eq(smartScopes.isPublic, true))))
+      .where(or(eq(smartScopes.userId, userId), eq(smartScopes.isPublic, true)))
       .orderBy(smartScopes.name);
   }
 
@@ -1358,8 +1358,6 @@ export class OpdsBookService {
     const [smartScope] = await this.db.select().from(smartScopes).where(eq(smartScopes.id, smartScopeId)).limit(1);
     if (!smartScope) return null;
     if (!smartScope.isPublic && smartScope.userId !== userId) return null;
-    // OPDS serves books. A podcast scope's rules are not a GroupRule and would not survive buildWhere.
-    if (smartScope.mediaType !== 'books') return null;
 
     const where = this.queryBuilder.buildWhere(smartScope.filter as GroupRule | null, {
       accessibleLibraryIds: accessibleIds,
