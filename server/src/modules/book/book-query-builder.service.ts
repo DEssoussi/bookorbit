@@ -1076,7 +1076,10 @@ export class BookQueryBuilder {
       const sq = this.db
         .select({ one: sql`1` })
         .from(collectionBooks)
-        .innerJoin(collections, and(eq(collectionBooks.collectionId, collections.id), eq(collections.userId, userId)))
+        .innerJoin(
+          collections,
+          and(eq(collectionBooks.collectionId, collections.id), or(eq(collections.userId, userId), eq(collections.isPublic, true))),
+        )
         .where(and(...predicates)!);
       return sql`exists (${sq})`;
     };
